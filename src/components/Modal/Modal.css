@@ -11,7 +11,7 @@
 }
 
 .modal::backdrop {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, var(--backdrop-opacity, 0.1));
 }
 
 .modal-close-button {

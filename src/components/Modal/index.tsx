@@ -6,13 +6,15 @@ interface ModalProps {
   isOpen: boolean
   onClose: () => void
   style?: CSSProperties | undefined
+  backdrop?: number
 }
 
 export default function Modal({
   children,
   isOpen,
   onClose,
-  style
+  style,
+  backdrop
 }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null)
 
@@ -41,7 +43,11 @@ export default function Modal({
   }, [onClose, handleOutsideClick])
 
   return (
-    <dialog ref={dialogRef} className="modal" style={{ ...style }}>
+    <dialog
+      ref={dialogRef}
+      className="modal"
+      style={{ ...style, "--backdrop-opacity": backdrop } as CSSProperties}
+    >
       <div>
         <button onClick={onClose} className="modal-close-button">
           <span className="material-symbols-outlined">close</span>
