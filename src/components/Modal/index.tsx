@@ -1,4 +1,11 @@
-import { ReactNode, CSSProperties, useRef, useEffect, useCallback } from "react"
+import {
+  ReactNode,
+  CSSProperties,
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo
+} from "react"
 import "./modal.css"
 
 interface ModalProps {
@@ -6,7 +13,7 @@ interface ModalProps {
   isOpen: boolean
   onClose: () => void
   style?: CSSProperties | undefined
-  backdrop?: number
+  backdrop?: number | undefined
 }
 
 export default function Modal({
@@ -42,11 +49,17 @@ export default function Modal({
     }
   }, [onClose, handleOutsideClick])
 
+  const opacity = useMemo(() => {
+    if (backdrop! > 1) return 1
+    else if (backdrop! < 0) return 0
+    else return backdrop
+  }, [backdrop])
+
   return (
     <dialog
       ref={dialogRef}
       className="modal"
-      style={{ ...style, "--backdrop-opacity": backdrop } as CSSProperties}
+      style={{ ...style, "--backdrop-opacity": opacity } as CSSProperties}
     >
       <div>
         <button onClick={onClose} className="modal-close-button">
