@@ -1,10 +1,5 @@
-import Loader from "./components/Loader"
+import Message from "./components/Message"
 
 export default function App() {
-  return (
-    <>
-      <Loader.Basic />
-      {/* <Loader.FullScreen /> */}
-    </>
-  )
+  return <button onClick={() => Message.info("Helllo World!")}>메세지</button>
 }
