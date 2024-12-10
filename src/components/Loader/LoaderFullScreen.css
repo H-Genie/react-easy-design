@@ -1,0 +1,11 @@
+@import url("./LoaderBasic.css");
+
+.loader-dim {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
