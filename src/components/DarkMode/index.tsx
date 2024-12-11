@@ -1,7 +1,16 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, ReactNode } from "react"
 import "./DarkMode.css"
 
-function DarkMode() {
+interface DarkModeControllerProps {
+  children:
+    | ((props: {
+        isDarkMode: boolean
+        toggleDarkMode: () => void
+      }) => ReactNode)
+    | ReactNode
+}
+
+export default function DarkMode({ children }: DarkModeControllerProps) {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     return localStorage.getItem("theme") === "dark"
   })
@@ -15,14 +24,9 @@ function DarkMode() {
     setIsDarkMode(prevMode => !prevMode)
   }
 
-  return (
-    <div className="App">
-      <h1>{isDarkMode ? "다크 모드" : "라이트 모드"}</h1>
-      <button onClick={toggleDarkMode}>
-        {isDarkMode ? "라이트 모드로 전환" : "다크 모드로 전환"}
-      </button>
-    </div>
-  )
+  if (typeof children === "function") {
+    return <>{children({ isDarkMode, toggleDarkMode })}</>
+  } else {
+    return <>{children}</>
+  }
 }
-
-export default DarkMode

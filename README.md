@@ -68,3 +68,42 @@ Loader.FullScreen :
 <button onClick={Message.warning("Warning")}>Submit</button>
 <button onClick={Message.error("Error")}>Submit</button>
 ```
+
+##
+
+### DarkMode
+
+easy mode
+
+- Put the necessary node inside the <DarkMode> component.
+- <DarkModeButton> appears in the bottom right corner of the screen, and you can control the theme with it.
+
+```js
+<DarkMode>
+    <header><header>
+    <main>Helo World!</main>
+    <footer></footer>
+</DarkMode>
+<DarkModeButton />
+```
+
+custom mode
+
+- There are two options. You don't necessarily need to import both.
+- "isDarkMode" is a boolean that indicates if you are currently in dark mode
+- "toggleMode" is the function to switch between themes. Create your own button and add it to the onClick
+
+```js
+<DarkMode>
+    {({ toggleDarkMode, isDarkMode }) => (
+        <>
+            <header><header>
+            <main>
+                <h1>Helo World!</h1>
+                <button onClick={toggleDarkMode}>Change Theme</button>
+            </main>
+            <footer></footer>
+        </>
+    )}
+</DarkMode>
+```
