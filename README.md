@@ -64,5 +64,7 @@ Loader.FullScreen :
 ### Message
 
 ```js
-<button onClick={Message.info("Hello World!")}>Submit</button>
+<button onClick={Message.info("Info")}>Submit</button>
+<button onClick={Message.warning("Warning")}>Submit</button>
+<button onClick={Message.error("Error")}>Submit</button>
 ```

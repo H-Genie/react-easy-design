@@ -2,34 +2,43 @@ import { useState, useEffect } from "react"
 import ReactDOM from "react-dom"
 import "./Message.css"
 
-interface MessageItem {
+type MessageType = "info" | "warning" | "error"
+
+interface Message {
   id: number
   content: string
+  type: MessageType
 }
 
 let messageContainer: HTMLDivElement | null = null
 
-const Message = {
-  info: (content: string) => {
-    if (!messageContainer) {
-      messageContainer = document.createElement("div")
-      document.body.appendChild(messageContainer)
-      ReactDOM.render(<MessageManager />, messageContainer)
-    }
-
-    const event = new CustomEvent("addMessage", { detail: content })
+const showMessage = (content: string, type: MessageType) => {
+  const dispatchMessage = () => {
+    const event = new CustomEvent("addMessage", { detail: { content, type } })
     window.dispatchEvent(event)
+  }
+
+  if (!messageContainer) {
+    messageContainer = document.createElement("div")
+    document.body.appendChild(messageContainer)
+    ReactDOM.render(<MessageHandler />, messageContainer)
+
+    // 렌더링 및 useEffect 타이밍이 안맞음 : 첫번째 디스패치를 지연
+    setTimeout(dispatchMessage, 0)
+  } else {
+    dispatchMessage()
   }
 }
 
-const MessageManager = () => {
-  const [messages, setMessages] = useState<MessageItem[]>([])
+const MessageHandler = () => {
+  const [messages, setMessages] = useState<Message[]>([])
 
   useEffect(() => {
-    const handleAddMessage = (event: CustomEvent<string>) => {
-      const newMessage: MessageItem = {
+    const handleAddMessage = (event: CustomEvent<Message>) => {
+      const newMessage = {
         id: Date.now(),
-        content: event.detail
+        content: event.detail.content,
+        type: event.detail.type
       }
       setMessages(prev => [...prev, newMessage])
 
@@ -49,14 +58,32 @@ const MessageManager = () => {
   }, [])
 
   return (
-    <div className="message-wrapper">
-      {messages.map(msg => (
-        <div key={msg.id} className="message-container">
-          {msg.content}
+    <div className="message-container">
+      {messages.map(message => (
+        <div
+          key={message.id}
+          className={`message ${message.type} display-flex`}
+        >
+          <span className="material-symbols-outlined icons">
+            {message.type}
+          </span>
+          <p>{message.content}</p>
         </div>
       ))}
     </div>
   )
+}
+
+const Message = {
+  info: (content: string) => {
+    showMessage(content, "info")
+  },
+  warning: (content: string) => {
+    showMessage(content, "warning")
+  },
+  error: (content: string) => {
+    showMessage(content, "error")
+  }
 }
 
 export default Message
