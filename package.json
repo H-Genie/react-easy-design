@@ -1,6 +1,7 @@
 {
   "name": "react-easy-design",
-  "version": "0.0.0",
+  "author": "H-Genie",
+  "version": "1.0.0",
   "license": "MIT",
   "private": true,
   "type": "module",

@@ -1,11 +1,9 @@
-import Message from "./components/Message"
+import DarkMode from "./components/DarkMode"
 
 export default function App() {
   return (
     <>
-      <button onClick={() => Message.info("info")}>info</button>
-      <button onClick={() => Message.warning("warning")}>warning</button>
-      <button onClick={() => Message.error("error")}>error</button>
+      <DarkMode />
     </>
   )
 }
