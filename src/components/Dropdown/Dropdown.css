@@ -1,0 +1,30 @@
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu.bottomLeft,
+.dropdown-menu.topLeft {
+  left: 0;
+}
+
+.dropdown-menu.bottomRight,
+.dropdown-menu.topRight {
+  right: 0;
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}

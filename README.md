@@ -107,3 +107,49 @@ custom mode
     )}
 </DarkMode>
 ```
+
+##
+
+### Dropdown
+
+- Passes in the items to display in the dropdown in the form of {key, value}
+- Insert a trigger button inside a &lt;Dropdown&gt; component
+
+```js
+const items = [
+    { key: "ko", label: "Korean" },
+    { key: "en", label: "English" },
+    { key: "jp", label: "Japanese" }
+]
+
+<Dropdown
+    menu={items}
+    onClick={e => console.log(e.key)}
+    placement="bottomLeft"
+>
+    <button>trigger</button>
+</Dropdown>
+```
+
+<table>
+    <tr>
+        <td>menu</td>
+        <td>required</td>
+        <td>dropdown item list : Array with objects for key, value</td>
+    </tr>
+    <tr>
+        <td>onClick</td>
+        <td>option</td>
+        <td>Action to take when an item is clicked</td>
+    </tr>
+    <tr>
+        <td>placement</td>
+        <td>option</td>
+        <td>
+            bottomLeft (default)<br />
+            bottomRight<br />
+            topLeft<br />
+            topRight
+        </td>
+    </tr>
+</table>
