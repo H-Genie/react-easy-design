@@ -1,5 +1,21 @@
 # [react-easy-design](https://github.com/H-Genie/react-easy-design)
 
+- [Modal](#modal)
+- [Loader](#loader)
+- [Message](#message)
+- [DarkMode](#darkmode)
+- [Dropdown](#dropdown)
+
+## Install
+
+```js
+npm install react-easy-design
+```
+
+```js
+yarn add react-easy-design
+```
+
 ## Usage
 
 ### Modal
@@ -112,7 +128,7 @@ custom mode
 
 ### Dropdown
 
-- Passes in the items to display in the dropdown in the form of {key, value}
+- Passes in the items to display in the dropdown in the form of {key, label}
 - Insert a trigger button inside a &lt;Dropdown&gt; component
 
 ```js
@@ -135,7 +151,7 @@ const items = [
     <tr>
         <td>menu</td>
         <td>required</td>
-        <td>dropdown item list : Array with objects for key, value</td>
+        <td>dropdown item list : Array with objects for key, label</td>
     </tr>
     <tr>
         <td>onClick</td>
