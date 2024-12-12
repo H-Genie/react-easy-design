@@ -73,10 +73,10 @@ Loader.FullScreen :
 
 ### DarkMode
 
-easy mode
+simply mode
 
-- Put the necessary node inside the <DarkMode> component.
-- <DarkModeButton> appears in the bottom right corner of the screen, and you can control the theme with it.
+- Put the necessary node inside the &lt;DarkMode&gt; component.
+- &lt;DarkModeButton&gt; appears in the bottom right corner of the screen, and you can control the theme with it.
 
 ```js
 <DarkMode>
@@ -95,12 +95,12 @@ custom mode
 
 ```js
 <DarkMode>
-    {({ toggleDarkMode, isDarkMode }) => (
+    {({ toggleMode, isDarkMode }) => (
         <>
             <header><header>
             <main>
                 <h1>Helo World!</h1>
-                <button onClick={toggleDarkMode}>Change Theme</button>
+                <button onClick={toggleMode}>Change Theme</button>
             </main>
             <footer></footer>
         </>
