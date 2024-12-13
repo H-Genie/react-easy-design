@@ -5,6 +5,7 @@
 - [Message](#message)
 - [DarkMode](#darkmode)
 - [Dropdown](#dropdown)
+- [ScrollNavigation](#scrollnavigation)
 
 ## Install
 
@@ -167,5 +168,57 @@ const items = [
             topLeft<br />
             topRight
         </td>
+    </tr>
+</table>
+
+##
+
+### ScrollNavigation
+
+Set "id" to the elements to be placed in the navigation bar, and pass the ids to an array
+
+```js
+<ScrollNavigation
+    items={["reservation", "products", "location", "promotion"]}
+    top={100}
+    backgroundColor="yellow"
+    color="black"
+/>
+
+// contents to example display
+<div id="reservation" style={{ height: "100vh" }}>
+    reservation
+</div>
+<div id="products" style={{ height: "100vh" }}>
+    items
+</div>
+<div id="location" style={{ height: "100vh" }}>
+    location
+</div>
+<div id="promotion" style={{ height: "100vh" }}>
+    promotion
+</div>
+```
+
+<table>
+    <tr>
+        <td>items</td>
+        <td>required</td>
+        <td>id of elements : string[]</td>
+    </tr>
+    <tr>
+        <td>top</td>
+        <td>option</td>
+        <td>height to position the navigation bar(px)</td>
+    </tr>
+    <tr>
+        <td>backgroundColor</td>
+        <td>option</td>
+        <td>background-color of selected item</td>
+    </tr>
+    <tr>
+        <td>color</td>
+        <td>option</td>
+        <td>color of selected item</td>
     </tr>
 </table>
