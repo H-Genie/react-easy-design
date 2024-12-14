@@ -23,7 +23,7 @@ const showMessage = (content: string, type: MessageType) => {
     document.body.appendChild(messageContainer)
     ReactDOM.render(<MessageHandler />, messageContainer)
 
-    // 렌더링 및 useEffect 타이밍이 안맞음 : 첫번째 디스패치를 지연
+    // message-container를 DOM에 추가하기 위해 디스패치를 잠시 지연
     setTimeout(dispatchMessage, 0)
   } else {
     dispatchMessage()
@@ -76,13 +76,13 @@ const MessageHandler = () => {
 
 const Message = {
   info: (content: string) => {
-    showMessage(content, "info")
+    return () => showMessage(content, "info")
   },
   warning: (content: string) => {
-    showMessage(content, "warning")
+    return () => showMessage(content, "warning")
   },
   error: (content: string) => {
-    showMessage(content, "error")
+    return () => showMessage(content, "error")
   }
 }
 
