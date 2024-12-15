@@ -1,20 +1,21 @@
-import DarkMode from "./components/DarkMode"
-import DarkModeButton from "./components/DarkMode/DarkModeButton"
-import { useDarkMode } from "./hook/useDarkMode"
+import Dropdown from "./components/Dropdown"
 
 export default function App() {
-  const { toggleDarkMode } = useDarkMode()
+  const items = [
+    { key: "ko", label: "Korean" },
+    { key: "en", label: "English" },
+    { key: "jp", label: "Japanese" }
+  ]
 
   return (
     <>
-      <DarkMode />
-
-      <header></header>
-      <main>Helo World!</main>
-      <footer></footer>
-
-      {/* <button onClick={toggleDarkMode}>change</button> */}
-      <DarkModeButton />
+      <Dropdown
+        menu={items}
+        onSelect={item => console.log(item.key)}
+        placement="bottomLeft"
+      >
+        <button>trigger</button>
+      </Dropdown>
     </>
   )
 }

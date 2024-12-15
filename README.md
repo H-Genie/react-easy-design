@@ -137,7 +137,7 @@ const items = [
 
 <Dropdown
     menu={items}
-    onClick={e => console.log(e.key)}
+    onSelect={item => console.log(item.key)}
     placement="bottomLeft"
 >
     <button>trigger</button>
@@ -151,7 +151,7 @@ const items = [
         <td>dropdown item list : Array with objects for key, label</td>
     </tr>
     <tr>
-        <td>onClick</td>
+        <td>onSelect</td>
         <td>option</td>
         <td>Action to take when an item is clicked</td>
     </tr>

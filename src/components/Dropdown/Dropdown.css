@@ -1,5 +1,6 @@
 .dropdown-container {
   position: relative;
+  width: fit-content;
 }
 
 .dropdown-menu {

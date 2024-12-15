@@ -4,19 +4,19 @@ import "./Dropdown.css"
 interface MenuItem<T = string> {
   key: string
   label: string
-  onClick?: (e: { key: T }) => void
+  onSelect?: (e: { key: T }) => void
 }
 
 interface DropdownProps<T = string> {
-  menu: MenuItem[]
-  onClick?: (e: { key: T }) => void
+  menu: MenuItem<T>[]
+  onSelect?: (e: { key: T }) => void
   placement?: "bottomLeft" | "bottomRight" | "topLeft" | "topRight"
   children: ReactNode
 }
 
 const Dropdown = ({
   menu,
-  onClick,
+  onSelect,
   placement = "bottomLeft",
   children
 }: DropdownProps) => {
@@ -42,13 +42,14 @@ const Dropdown = ({
   }, [])
 
   useEffect(() => {
-    if (menuRef.current) {
+    if (menuHeight === 0 && menuRef.current) {
       setMenuHeight(menuRef.current.offsetHeight)
     }
-  }, [isOpen])
+    // ref에 높이가 측정되는 최초 1회만 실행
+  }, [isOpen, menuHeight])
 
   const handleMenuClick = (item: MenuItem) => {
-    if (onClick) onClick({ key: item.key })
+    if (onSelect) onSelect(item)
     setIsOpen(false)
   }
 
