@@ -5,7 +5,7 @@ interface ScrollNavigationProps {
   items: string[]
   top?: number
   backgroundColor?: string
-  color?: string
+  textColor?: string
 }
 
 const removeAll = () => {
@@ -18,7 +18,7 @@ export default function ScrollNavigation({
   items,
   top = 0,
   backgroundColor,
-  color
+  textColor
 }: ScrollNavigationProps) {
   // nav height 50px
   const OFFSET_TOP_FIX = 50 + top
@@ -85,11 +85,14 @@ export default function ScrollNavigation({
         )
       }
 
-      if (color) {
-        document.documentElement.style.setProperty("--selected-color", color!)
+      if (textColor) {
+        document.documentElement.style.setProperty(
+          "--selected-color",
+          textColor!
+        )
       }
     }
-  }, [selectedPosition, items, backgroundColor, color])
+  }, [selectedPosition, items, backgroundColor, textColor])
 
   return (
     <nav className="scroll-navigation" style={{ top }}>

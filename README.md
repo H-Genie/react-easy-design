@@ -178,7 +178,7 @@ Set "id" to the elements to be placed in the navigation bar, and pass the ids to
     items={["reservation", "products", "location", "promotion"]}
     top={100}
     backgroundColor="yellow"
-    color="black"
+    textColor="black"
 />
 
 // contents to example display
@@ -213,8 +213,8 @@ Set "id" to the elements to be placed in the navigation bar, and pass the ids to
         <td>background-color of selected item</td>
     </tr>
     <tr>
-        <td>color</td>
+        <td>textColor</td>
         <td>option</td>
-        <td>color of selected item</td>
+        <td>text color of selected item</td>
     </tr>
 </table>
