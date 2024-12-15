@@ -81,48 +81,44 @@ Loader.FullScreen :
 ### Message
 
 ```js
-<button onClick={Message.info("Info")}>Submit</button>
-<button onClick={Message.warning("Warning")}>Submit</button>
-<button onClick={Message.error("Error")}>Submit</button>
+<button onClick={Message.info("Successfully submitted")}>
+    Submit
+</button>
+
+<button onClick={Message.warning("Please enter all information")}>
+    Submit
+</button>
+
+<button onClick={Message.error("Response was not successful, please try again.")}>
+    Submit
+</button>
 ```
 
 ##
 
 ### DarkMode
 
-simply mode
-
-- Put the necessary node inside the &lt;DarkMode&gt; component.
-- &lt;DarkModeButton&gt; appears in the bottom right corner of the screen, and you can control the theme with it.
+- Inserting a &lt;DarkMode /&gt; works globally in the DOM.
+- Insert a &lt;DarkModeButton&gt; to easily switch dark mode. It appears in the bottom right corner of the screen, and you can control the theme with it.
 
 ```js
 <DarkMode>
-    <header><header>
-    <main>Helo World!</main>
-    <footer></footer>
-</DarkMode>
+
 <DarkModeButton />
 ```
 
-custom mode
-
-- There are two options. You don't necessarily need to import both.
+- useDarkMode hook gives you two options.
+- "toggleDarkMode" is the function to switch between themes. Create your own button and add it to the onClick
 - "isDarkMode" is a boolean that indicates if you are currently in dark mode
-- "toggleMode" is the function to switch between themes. Create your own button and add it to the onClick
 
 ```js
-<DarkMode>
-    {({ toggleMode, isDarkMode }) => (
-        <>
-            <header><header>
-            <main>
-                <h1>Helo World!</h1>
-                <button onClick={toggleMode}>Change Theme</button>
-            </main>
-            <footer></footer>
-        </>
-    )}
-</DarkMode>
+const { toggleDarkMode, isDarkMode } = useDarkMode()
+
+<DarkMode />
+
+<button onClick={toggleDarkMode}>
+    {isDarkMode ? "change to Ligh-mode" : "change to Dark-mode"}
+</button>
 ```
 
 ##

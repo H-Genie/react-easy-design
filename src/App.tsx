@@ -1,11 +1,20 @@
-import Message from "./components/Message"
+import DarkMode from "./components/DarkMode"
+import DarkModeButton from "./components/DarkMode/DarkModeButton"
+import { useDarkMode } from "./hook/useDarkMode"
 
 export default function App() {
+  const { toggleDarkMode } = useDarkMode()
+
   return (
     <>
-      <button onClick={Message.info("Info")}>Submit</button>
-      <button onClick={Message.warning("Warning")}>Submit</button>
-      <button onClick={Message.error("Error")}>Submit</button>
+      <DarkMode />
+
+      <header></header>
+      <main>Helo World!</main>
+      <footer></footer>
+
+      {/* <button onClick={toggleDarkMode}>change</button> */}
+      <DarkModeButton />
     </>
   )
 }

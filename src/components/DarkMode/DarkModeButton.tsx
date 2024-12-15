@@ -1,20 +1,18 @@
-import DarkMode from "."
-import "./DarkModeButton.css"
+import { useDarkMode } from "../../hook/useDarkMode"
+import "./DarkMode.css"
 
 export default function DarkModeButton() {
+  const { toggleDarkMode, isDarkMode } = useDarkMode()
+
   return (
-    <DarkMode>
-      {({ toggleDarkMode, isDarkMode }) => (
-        <button onClick={toggleDarkMode} className="dark-mode-toggle">
-          <span
-            className={`material-symbols-outlined ${
-              isDarkMode ? "dark-mode-button" : "white-mode-button"
-            }`}
-          >
-            dark_mode
-          </span>
-        </button>
-      )}
-    </DarkMode>
+    <button onClick={toggleDarkMode} className="dark-mode-toggle">
+      <span
+        className={`material-symbols-outlined ${
+          isDarkMode ? "dark-mode-button" : "light-mode-button"
+        }`}
+      >
+        dark_mode
+      </span>
+    </button>
   )
 }
