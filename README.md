@@ -22,11 +22,11 @@ yarn add react-easy-design
 ### Modal
 
 ```js
-const [isOpen, setIsOpen] = useState(false)
+const [open, setOpen] = useState(false)
 
 <button onClick={() => setIsOpen(true)}>Modal Open</button>
 
-<Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+<Modal open={open} onClose={() => setIsOpen(false)}>
   Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 </Modal>
 ```
@@ -35,14 +35,14 @@ const [isOpen, setIsOpen] = useState(false)
 
 <table>
     <tr>
-        <td>isOpen</td>
+        <td>open</td>
         <td>required</td>
         <td>boolean in useState</td>
     </tr>
     <tr>
         <td>onClose</td>
         <td>required</td>
-        <td>SetStateAction that changes "isOpen" to false</td>
+        <td>SetStateAction that changes "open" to false</td>
     </tr>
     <tr>
         <td>style</td>

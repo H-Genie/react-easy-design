@@ -10,7 +10,7 @@ import "./modal.css"
 
 interface ModalProps {
   children: ReactNode
-  isOpen: boolean
+  open: boolean
   onClose: () => void
   style?: CSSProperties | undefined
   backdrop?: number | undefined
@@ -18,7 +18,7 @@ interface ModalProps {
 
 export default function Modal({
   children,
-  isOpen,
+  open,
   onClose,
   style,
   backdrop
@@ -26,9 +26,9 @@ export default function Modal({
   const dialogRef = useRef<HTMLDialogElement>(null)
 
   useEffect(() => {
-    if (isOpen) dialogRef.current?.showModal()
+    if (open) dialogRef.current?.showModal()
     else dialogRef.current?.close()
-  }, [isOpen])
+  }, [open])
 
   const handleOutsideClick = useCallback(
     (e: MouseEvent) => {
@@ -61,12 +61,14 @@ export default function Modal({
       className="modal"
       style={{ ...style, "--backdrop-opacity": opacity } as CSSProperties}
     >
-      <div>
-        <button onClick={onClose} className="modal-close-button">
-          <span className="material-symbols-outlined">close</span>
-        </button>
-        {children}
-      </div>
+      {open && (
+        <div>
+          <button onClick={onClose} className="modal-close-button">
+            <span className="material-symbols-outlined">close</span>
+          </button>
+          {children}
+        </div>
+      )}
     </dialog>
   )
 }
