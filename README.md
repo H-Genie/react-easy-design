@@ -52,7 +52,7 @@ const [open, setOpen] = useState(false)
     <tr>
         <td>backdrop</td>
         <td>option</td>
-        <td>backdrop opacity : real numbers between 0 and 1</td>
+        <td>backdrop opacity : floating numbers between 0 and 1</td>
     </tr>
 </table>
 
