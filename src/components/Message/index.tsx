@@ -12,7 +12,8 @@ interface Message {
 
 let messageContainer: HTMLDivElement | null = null
 
-const showMessage = (content: string, type: MessageType) => {
+// eslint-disable-next-line react-refresh/only-export-components
+export const showMessage = (content: string, type: MessageType) => {
   const dispatchMessage = () => {
     const event = new CustomEvent("addMessage", { detail: { content, type } })
     window.dispatchEvent(event)
@@ -30,7 +31,7 @@ const showMessage = (content: string, type: MessageType) => {
   }
 }
 
-const MessageHandler = () => {
+export const MessageHandler = () => {
   const [messages, setMessages] = useState<Message[]>([])
 
   useEffect(() => {

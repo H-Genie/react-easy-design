@@ -1,4 +1,4 @@
-import { useDarkMode } from "../../hook/useDarkMode"
+import { useDarkMode } from "../../hooks/useDarkMode"
 import "./DarkMode.css"
 
 export default function DarkModeButton() {
