@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { defineConfig } from "vite"
+import { defineConfig } from "vitest/config"
 import react from "@vitejs/plugin-react"
 
 export default defineConfig({
@@ -7,6 +7,6 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: "./src/test/setup.ts" // 테스트 셋업 파일 경로
+    setupFiles: "./src/test/setup.ts"
   }
 })

@@ -7,8 +7,10 @@ beforeEach(() => {
     getItem: vi.fn(),
     setItem: vi.fn(),
     removeItem: vi.fn(),
-    clear: vi.fn()
-  }
+    clear: vi.fn(),
+    key: vi.fn(),
+    length: 0
+  } as Storage
 })
 
 describe("useDarkMode", () => {
@@ -33,7 +35,7 @@ describe("useDarkMode", () => {
   })
 
   it("toggleDarkMode를 실행하여 상태를 변경합니다", () => {
-    global.localStorage.getItem = vi.fn(() => "light")
+    globalThis.localStorage.getItem = vi.fn(() => "light")
 
     const { result } = renderHook(() => useDarkMode())
 
@@ -44,13 +46,19 @@ describe("useDarkMode", () => {
     })
     expect(result.current.isDarkMode).toBe(true)
     expect(document.body.className).toBe("dark-mode")
-    expect(global.localStorage.setItem).toHaveBeenCalledWith("theme", "dark")
+    expect(globalThis.localStorage.setItem).toHaveBeenCalledWith(
+      "theme",
+      "dark"
+    )
 
     act(() => {
       result.current.toggleDarkMode()
     })
     expect(result.current.isDarkMode).toBe(false)
     expect(document.body.className).toBe("light-mode")
-    expect(global.localStorage.setItem).toHaveBeenCalledWith("theme", "light")
+    expect(globalThis.localStorage.setItem).toHaveBeenCalledWith(
+      "theme",
+      "light"
+    )
   })
 })
