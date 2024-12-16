@@ -59,7 +59,7 @@ export const MessageHandler = () => {
   }, [])
 
   return (
-    <div className="message-container">
+    <div className="message-container" role="alert">
       {messages.map(message => (
         <div
           key={message.id}
