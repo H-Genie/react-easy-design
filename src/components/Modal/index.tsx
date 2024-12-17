@@ -8,7 +8,7 @@ import {
 } from "react"
 import "./modal.css"
 
-interface ModalProps {
+export interface ModalProps {
   children: ReactNode
   open: boolean
   onClose: () => void
