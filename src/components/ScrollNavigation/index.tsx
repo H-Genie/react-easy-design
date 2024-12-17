@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import "./ScrollNavigation.css"
 
-interface ScrollNavigationProps {
+export interface ScrollNavigationProps {
   items: string[]
   top?: number
   backgroundColor?: string
