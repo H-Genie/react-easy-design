@@ -4,12 +4,12 @@ import "./Dropdown.css"
 interface MenuItem<T = string> {
   key: string
   label: string
-  onSelect?: (e: { key: T }) => void
+  onSelect?: (e: { key: T; label: T }) => void
 }
 
-interface DropdownProps<T = string> {
+export interface DropdownProps<T = string> {
   menu: MenuItem<T>[]
-  onSelect?: (e: { key: T }) => void
+  onSelect?: (e: { key: T; label: T }) => void
   placement?: "bottomLeft" | "bottomRight" | "topLeft" | "topRight"
   children: ReactNode
 }
