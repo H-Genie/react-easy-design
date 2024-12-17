@@ -98,12 +98,9 @@ Loader.FullScreen :
 
 ### DarkMode
 
-- Inserting a &lt;DarkMode /&gt; works globally in the DOM.
 - Insert a &lt;DarkModeButton&gt; to easily switch dark mode. It appears in the bottom right corner of the screen, and you can control the theme with it.
 
 ```js
-<DarkMode>
-
 <DarkModeButton />
 ```
 
@@ -113,8 +110,6 @@ Loader.FullScreen :
 
 ```js
 const { toggleDarkMode, isDarkMode } = useDarkMode()
-
-<DarkMode />
 
 <button onClick={toggleDarkMode}>
     {isDarkMode ? "change to Ligh-mode" : "change to Dark-mode"}
