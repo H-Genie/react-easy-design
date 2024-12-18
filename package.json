@@ -1,12 +1,25 @@
 {
   "name": "react-easy-design",
   "author": "H-Genie",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "type": "module",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs.js",
+      "import": "./dist/index.esm.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "rollup -c",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
@@ -17,11 +30,14 @@
   "dependencies": {
     "material-symbols": "^0.27.2",
     "react": "^18.2",
-    "react-dom": "^18.2"
+    "react-dom": "^18.2",
+    "react-easy-design": "^1.0.1"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.2",
     "@eslint/js": "^9.15.0",
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
     "@storybook/addon-essentials": "8.4.7",
     "@storybook/addon-interactions": "8.4.7",
     "@storybook/addon-onboarding": "8.4.7",
@@ -43,6 +59,10 @@
     "eslint-plugin-storybook": "^0.11.1",
     "globals": "^15.12.0",
     "jsdom": "^25.0.1",
+    "rollup": "^4.28.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.36.0",
     "storybook": "8.4.7",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.15.0",
