@@ -30,8 +30,7 @@
   "dependencies": {
     "material-symbols": "^0.27.2",
     "react": "^18.2",
-    "react-dom": "^18.2",
-    "react-easy-design": "^1.0.1"
+    "react-dom": "^18.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.2",
