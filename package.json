@@ -1,7 +1,7 @@
 {
   "name": "react-easy-design",
   "author": "H-Genie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs.js",
@@ -28,9 +28,11 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "material-symbols": "^0.27.2",
-    "react": "^18.2",
-    "react-dom": "^18.2"
+    "material-symbols": "^0.27.2"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "3.2.2",

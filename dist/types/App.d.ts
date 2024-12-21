@@ -1,1 +1,1 @@
-export default function App(): null;
+export default function App(): import("react/jsx-runtime").JSX.Element;

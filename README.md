@@ -22,13 +22,23 @@ yarn add react-easy-design
 ### Modal
 
 ```js
-const [open, setOpen] = useState(false)
+import { useState } from "react"
+import { Modal } from "react-easy-design"
 
-<button onClick={() => setIsOpen(true)}>Modal Open</button>
+export default function App() {
+  const [open, setOpen] = useState(false)
 
-<Modal open={open} onClose={() => setIsOpen(false)}>
-  Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-</Modal>
+  return (
+    <>
+      <button onClick={() => setOpen(true)}>Modal Open</button>
+
+      <Modal open={open} onClose={() => setOpen(false)}>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry.
+      </Modal>
+    </>
+  )
+}
 ```
 
 ### props/option
@@ -46,12 +56,12 @@ const [open, setOpen] = useState(false)
     </tr>
     <tr>
         <td>style</td>
-        <td>option</td>
+        <td>optional</td>
         <td>React.CSSProperties</td>
     </tr>
     <tr>
         <td>backdrop</td>
-        <td>option</td>
+        <td>optional</td>
         <td>backdrop opacity : floating numbers between 0 and 1</td>
     </tr>
 </table>
@@ -60,15 +70,18 @@ const [open, setOpen] = useState(false)
 
 ### Loader
 
-```js
-<Loader.Basic />
-<Loader.FullScreen />
-```
-
 Loader.Basic
 
 - The indicator is placed in the location you specified.
 - It can control the screen.
+
+```js
+import { Loader } from "react-easy-design"
+
+export default function App() {
+  return <Loader.Basic />
+}
+```
 
 Loader.FullScreen :
 
@@ -76,22 +89,40 @@ Loader.FullScreen :
 - It can't control the screen.
 - The indicator is located in the center of the screen.
 
+```js
+import { Loader } from "react-easy-design"
+
+export default function App() {
+  return <Loader.FullScreen />
+}
+```
+
 ##
 
 ### Message
 
 ```js
-<button onClick={Message.info("Successfully submitted")}>
-    Submit
-</button>
+import { Message } from "react-easy-design"
 
-<button onClick={Message.warning("Please enter all information")}>
-    Submit
-</button>
+export default function App() {
+  return (
+    <>
+      <button onClick={Message.info("Successfully submitted")}>Submit</button>
 
-<button onClick={Message.error("Response was not successful, please try again.")}>
-    Submit
-</button>
+      <button onClick={Message.warning("Please enter all information")}>
+        Submit
+      </button>
+
+      <button
+        onClick={Message.error(
+          "Response was not successful, please try again."
+        )}
+      >
+        Submit
+      </button>
+    </>
+  )
+}
 ```
 
 ##
@@ -101,7 +132,11 @@ Loader.FullScreen :
 - Insert a &lt;DarkModeButton&gt; to easily switch dark mode. It appears in the bottom right corner of the screen, and you can control the theme with it.
 
 ```js
-<DarkModeButton />
+import { DarkModeButton } from "react-easy-design"
+
+export default function App() {
+  return <DarkModeButton />
+}
 ```
 
 - useDarkMode hook gives you two options.
@@ -109,11 +144,19 @@ Loader.FullScreen :
 - "isDarkMode" is a boolean that indicates if you are currently in dark mode
 
 ```js
-const { toggleDarkMode, isDarkMode } = useDarkMode()
+import { useDarkMode } from "react-easy-design"
 
-<button onClick={toggleDarkMode}>
-    {isDarkMode ? "change to Ligh-mode" : "change to Dark-mode"}
-</button>
+export default function App() {
+  const { toggleDarkMode, isDarkMode } = useDarkMode()
+
+  return (
+    <>
+      <button onClick={toggleDarkMode}>
+        {isDarkMode ? "change to Ligh-mode" : "change to Dark-mode"}
+      </button>
+    </>
+  )
+}
 ```
 
 ##
@@ -124,19 +167,25 @@ const { toggleDarkMode, isDarkMode } = useDarkMode()
 - Insert a trigger button inside a &lt;Dropdown&gt; component
 
 ```js
-const items = [
+import { Dropdown } from "react-easy-design"
+
+export default function App() {
+  const items = [
     { key: "ko", label: "Korean" },
     { key: "en", label: "English" },
     { key: "jp", label: "Japanese" }
-]
+  ]
 
-<Dropdown
-    menu={items}
-    onSelect={item => console.log(item.key)}
-    placement="bottomLeft"
->
-    <button>trigger</button>
-</Dropdown>
+  return (
+    <Dropdown
+      menu={items}
+      onSelect={item => console.log(item.key)}
+      placement="bottomLeft"
+    >
+      <button>trigger</button>
+    </Dropdown>
+  )
+}
 ```
 
 <table>
@@ -147,12 +196,12 @@ const items = [
     </tr>
     <tr>
         <td>onSelect</td>
-        <td>option</td>
+        <td>optional</td>
         <td>Action to take when an item is clicked</td>
     </tr>
     <tr>
         <td>placement</td>
-        <td>option</td>
+        <td>optional</td>
         <td>
             bottomLeft (default)<br />
             bottomRight<br />
@@ -169,26 +218,34 @@ const items = [
 Set "id" to the elements to be placed in the navigation bar, and pass the ids to an array
 
 ```js
-<ScrollNavigation
-    items={["reservation", "products", "location", "promotion"]}
-    top={100}
-    backgroundColor="yellow"
-    textColor="black"
-/>
+import { ScrollNavigation } from "react-easy-design"
 
-// contents to example display
-<div id="reservation" style={{ height: "100vh" }}>
-    reservation
-</div>
-<div id="products" style={{ height: "100vh" }}>
-    items
-</div>
-<div id="location" style={{ height: "100vh" }}>
-    location
-</div>
-<div id="promotion" style={{ height: "100vh" }}>
-    promotion
-</div>
+export default function App() {
+  return (
+    <>
+      <ScrollNavigation
+        items={["reservation", "products", "location", "promotion"]}
+        top={100}
+        backgroundColor="yellow"
+        textColor="black"
+      />
+
+      {/* contents to example display */}
+      <div id="reservation" style={{ height: "100vh" }}>
+        reservation
+      </div>
+      <div id="products" style={{ height: "100vh" }}>
+        items
+      </div>
+      <div id="location" style={{ height: "100vh" }}>
+        location
+      </div>
+      <div id="promotion" style={{ height: "100vh" }}>
+        promotion
+      </div>
+    </>
+  )
+}
 ```
 
 <table>
@@ -199,17 +256,17 @@ Set "id" to the elements to be placed in the navigation bar, and pass the ids to
     </tr>
     <tr>
         <td>top</td>
-        <td>option</td>
+        <td>optional</td>
         <td>height to position the navigation bar(px)</td>
     </tr>
     <tr>
         <td>backgroundColor</td>
-        <td>option</td>
+        <td>optional</td>
         <td>background-color of selected item</td>
     </tr>
     <tr>
         <td>textColor</td>
-        <td>option</td>
+        <td>optional</td>
         <td>text color of selected item</td>
     </tr>
 </table>

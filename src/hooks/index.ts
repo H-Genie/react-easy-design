@@ -1,1 +1,1 @@
-export * from "./useDarkMode"
+export { useDarkMode } from "./useDarkMode"
